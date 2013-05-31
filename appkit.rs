@@ -45,9 +45,9 @@ pub struct NSRect {
     size: NSSize,
 }
 
-#[nolink]
-#[link_args="-framework AppKit"]
 pub mod appkit {
+    #[nolink]
+    #[link_args="-framework AppKit"]
     extern {
         fn NSBeep();
     }
