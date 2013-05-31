@@ -55,8 +55,8 @@ pub mod appkit {
 
 pub fn NSApp() -> base::id {
     unsafe {
-        let klass = str::as_c_str(~"NSApplication", |s| base::objc_getClass(s));
-        let sel = str::as_c_str(~"sharedApplication", |s| base::sel_registerName(s));
+        let klass = str::as_c_str("NSApplication", |s| base::objc_getClass(s));
+        let sel = str::as_c_str("sharedApplication", |s| base::sel_registerName(s));
         base::objc_msgSend(klass, sel)
     }
 }
