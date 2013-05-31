@@ -8,6 +8,7 @@
 // except according to those terms.
 
 use base;
+use std::str;
 
 pub type CGFloat = f32;
 
@@ -46,8 +47,10 @@ pub struct NSRect {
 
 #[nolink]
 #[link_args="-framework AppKit"]
-pub extern mod appkit {
-    fn NSBeep();
+pub mod appkit {
+    extern {
+        fn NSBeep();
+    }
 }
 
 pub fn NSApp() -> base::id {

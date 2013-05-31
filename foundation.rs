@@ -8,10 +8,12 @@
 // except according to those terms.
 
 use base;
+use std::str;
 
 #[nolink]
 #[link_args="-framework Foundation"]
-extern mod foundation {
+mod foundation {
+    extern {}
 }
 
 enum NSAutoreleasePool {
