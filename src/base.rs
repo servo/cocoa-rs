@@ -20,14 +20,14 @@ pub type SEL = libc::intptr_t;
 #[allow(non_camel_case_types)]
 pub type id = libc::intptr_t;
 
-#[cfg(target_word_size = "32")]
+#[cfg(not(feature = "arch_64"))]
 pub type NSInteger = libc::c_int;
-#[cfg(target_word_size = "32")]
+#[cfg(not(feature = "arch_64"))]
 pub type NSUInteger = libc::c_uint;
 
-#[cfg(target_word_size = "64")]
+#[cfg(feature = "arch_64")]
 pub type NSInteger = libc::c_long;
-#[cfg(target_word_size = "64")]
+#[cfg(feature = "arch_64")]
 pub type NSUInteger = libc::c_ulong;
 
 #[allow(non_upper_case_globals)]
