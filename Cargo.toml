@@ -4,6 +4,10 @@ name = "cocoa"
 version = "0.1.1"
 authors = ["The Servo Project Developers"]
 
+[features]
+
+arch_64 = []
+
 [lib]
 
 name = "cocoa"
