@@ -661,7 +661,7 @@ impl NSWindow for id {
     }
 
     unsafe fn alphaValue(self) -> CGFloat {
-        msg_send()(self, selector("alphaValue"))
+        msg_send_fpret()(self, selector("alphaValue"))
     }
 
     unsafe fn setAlphaValue_(self, windowAlpha: CGFloat) {
@@ -744,7 +744,7 @@ impl NSWindow for id {
     }
 
     unsafe fn contentBorderThicknessForEdge_(self, edge: NSRectEdge) -> CGFloat {
-        msg_send()(self, selector("contentBorderThicknessForEdge:"), edge)
+        msg_send_fpret()(self, selector("contentBorderThicknessForEdge:"), edge)
     }
 
     unsafe fn setContentBorderThickness_forEdge_(self, borderThickness: CGFloat, edge: NSRectEdge) {
@@ -780,7 +780,7 @@ impl NSWindow for id {
     }
 
     unsafe fn minFrameWidthWithTitle_styleMask_(self, windowTitle: id, windowStyle: NSUInteger) -> CGFloat {
-        msg_send()(self, selector("minFrameWidthWithTitle:styleMask:"), windowTitle, windowStyle)
+        msg_send_fpret()(self, selector("minFrameWidthWithTitle:styleMask:"), windowTitle, windowStyle)
     }
 
     unsafe fn contentRectForFrameRect_(self, windowFrame: NSRect) -> NSRect {
@@ -2058,15 +2058,15 @@ impl NSEvent for id {
     // Getting Scroll Wheel Event Information
 
     unsafe fn deltaX(self) -> CGFloat {
-        msg_send()(self, selector("deltaX"))
+        msg_send_fpret()(self, selector("deltaX"))
     }
 
     unsafe fn deltaY(self) -> CGFloat {
-        msg_send()(self, selector("deltaY"))
+        msg_send_fpret()(self, selector("deltaY"))
     }
 
     unsafe fn deltaZ(self) -> CGFloat {
-        msg_send()(self, selector("deltaZ"))
+        msg_send_fpret()(self, selector("deltaZ"))
     }
 
     // Getting Tablet Proximity Information
@@ -2158,7 +2158,7 @@ impl NSEvent for id {
     // Getting Touch and Gesture Information
 
     unsafe fn magnification(self) -> CGFloat {
-        msg_send()(self, selector("magnification"))
+        msg_send_fpret()(self, selector("magnification"))
     }
 
     unsafe fn touchesMatchingPhase_inView_(self, phase: NSTouchPhase, view: id /* (NSView *) */) -> id /* (NSSet *) */ {
@@ -2185,11 +2185,11 @@ impl NSEvent for id {
     }
 
     unsafe fn scrollingDeltaX(self) -> CGFloat {
-        msg_send()(self, selector("scrollingDeltaX"))
+        msg_send_fpret()(self, selector("scrollingDeltaX"))
     }
 
     unsafe fn scrollingDeltaY(self) -> CGFloat {
-        msg_send()(self, selector("scrollingDeltaY"))
+        msg_send_fpret()(self, selector("scrollingDeltaY"))
     }
 
     unsafe fn momentumPhase(self) -> NSEventPhase {
@@ -2282,7 +2282,7 @@ impl NSScreen for id {
     }
 
     unsafe fn backingScaleFactor(self) -> CGFloat {
-        msg_send()(self, selector("backingScaleFactor"))
+        msg_send_fpret()(self, selector("backingScaleFactor"))
     }
 
     unsafe fn convertRectFromBacking_(self, aRect: NSRect) -> NSRect {
