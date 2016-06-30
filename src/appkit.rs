@@ -437,7 +437,7 @@ pub trait NSPasteboard {
     unsafe fn canReadObjectForClasses_options(self, classArray: id, options: id) -> BOOL;
     unsafe fn types(self) -> id;
     unsafe fn typesFilterableTo(_: Self, _type: id) -> id {
-        msg_send![class("NSPasteboard"), typesFilterableTo:_types]
+        msg_send![class("NSPasteboard"), typesFilterableTo:_type]
     }
 
     unsafe fn name(self) -> id;
@@ -445,6 +445,10 @@ pub trait NSPasteboard {
 }
 
 impl NSPasteboard for id {
+    unsafe fn releaseGlobally(self) {
+        msg_send![self, releaseGlobally];
+    }
+
     unsafe fn clearContents(self) -> NSInteger {
         msg_send![self, clearContents]
     }
