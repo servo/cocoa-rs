@@ -518,6 +518,46 @@ impl NSPasteboard for id {
     }
 }
 
+pub trait NSPasteboardItem {
+
+}
+
+impl NSPasteboardItem for id {
+
+}
+
+pub trait NSPasteboardItemDataProvider {
+
+}
+
+impl NSPasteboardItemDataProvider for id {
+
+}
+
+pub trait NSPasteboardWriting {
+
+}
+
+impl NSPasteboardWriting for id {
+
+}
+
+pub trait NSPasteboardReading {
+
+}
+
+impl NSPasteboardReading for id {
+
+}
+
+pub trait NSPasteboardWritingOptions {
+
+}
+
+impl NSPasteboardWritingOptions for id {
+
+}
+
 pub trait NSMenu {
     unsafe fn alloc(_: Self) -> id {
         msg_send![class("NSMenu"), alloc]
