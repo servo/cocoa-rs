@@ -393,7 +393,7 @@ impl NSRunningApplication for id {
 }
 
 pub trait NSPasteboard {
-    unsafe fn generalPasteBoard(_: Self) -> id {
+    unsafe fn generalPasteboard(_: Self) -> id {
         msg_send![class("NSPasteboard"), generalPasteboard]
     }
 
