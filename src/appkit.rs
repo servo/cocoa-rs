@@ -581,27 +581,59 @@ impl NSPasteboardItemDataProvider for id {
 }
 
 pub trait NSPasteboardWriting {
+    unsafe fn writableTypesForPasteboard(self, pasteboard: id) -> id;
+    unsafe fn writingOptionsForType_pasteboard(self, _type: id, pasteboard: id) -> NSPasteboardWritingOptions;
 
+    unsafe fn pasteboardPropertyListForType(self, _type: id) -> id;
 }
 
 impl NSPasteboardWriting for id {
+    unsafe fn writableTypesForPasteboard(self, pasteboard: id) -> id {
+        msg_send![self, writableTypesForPasteboard:pasteboard]
+    }
 
+    unsafe fn writingOptionsForType_pasteboard(self, _type: id, pasteboard: id) -> NSPasteboardWritingOptions {
+        msg_send![self, writingOptionsForType:_type pasteboard:pasteboard]
+    }
+
+    unsafe fn pasteboardPropertyListForType(self, _type: id) -> id {
+        msg_send![self, pasteboardPropertyListForType:_type]
+    }
 }
 
 pub trait NSPasteboardReading {
+    unsafe fn initWithPasteboardPropertyList_ofType(self, propertyList: id, _type: id) -> id;
 
+    unsafe fn readableTypesForPasteboard(self, pasteboard: id) -> id {unimplemented!()}
+    unsafe fn readingOptionsForType(self, pasteboard: id)  {unimplemented!()}
 }
 
 impl NSPasteboardReading for id {
+    unsafe fn initWithPasteboardPropertyList_ofType(self, propertyList: id, _type: id) -> id {
+        msg_send![self, initWithPasteboardPropertyList:propertyList ofType:_type]
+    }
 
+    unsafe fn readableTypesForPasteboard(self, pasteboard: id) -> id {
+        msg_send![msg_send![self class], readableTypesForPasteboard:pasteboard]
+    }
+    unsafe fn readingOptionsForType(self, pasteboard: id)  {
+        msg_send![msg_send![self class], readingOptionsForType:pasteboard]
+    }
 }
 
-pub trait NSPasteboardWritingOptions {
-
+#[repr(u64)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum NSPasteboardReadingOptions {
+    NSPasteboardReadingAsData = 0,
+    NSPasteboardReadingAsString = 1 << 0,
+    NSPasteboardReadingAsPropertyList = 1 << 1,
+    NSPasteboardReadingAsKeyedArchive = 1 << 2
 }
 
-impl NSPasteboardWritingOptions for id {
-
+#[repr(u64)]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum NSPasteboardWritingOptions {
+    NSPasteboardWritingPromised = 1 << 9,
 }
 
 pub trait NSMenu {
