@@ -604,8 +604,8 @@ impl NSPasteboardWriting for id {
 pub trait NSPasteboardReading {
     unsafe fn initWithPasteboardPropertyList_ofType(self, propertyList: id, _type: id) -> id;
 
-    unsafe fn readableTypesForPasteboard(self, pasteboard: id) -> id {unimplemented!()}
-    unsafe fn readingOptionsForType(self, pasteboard: id)  {unimplemented!()}
+    unsafe fn readableTypesForPasteboard(self, pasteboard: id) -> id;
+    unsafe fn readingOptionsForType(self, pasteboard: id);
 }
 
 impl NSPasteboardReading for id {
@@ -614,10 +614,12 @@ impl NSPasteboardReading for id {
     }
 
     unsafe fn readableTypesForPasteboard(self, pasteboard: id) -> id {
-        msg_send![msg_send![self class], readableTypesForPasteboard:pasteboard]
+        let class: id = msg_send![self, class];
+        msg_send![class, readableTypesForPasteboard:pasteboard]
     }
     unsafe fn readingOptionsForType(self, pasteboard: id)  {
-        msg_send![msg_send![self class], readingOptionsForType:pasteboard]
+        let class: id = msg_send![self, class];
+        msg_send![class, readingOptionsForType:pasteboard]
     }
 }
 
