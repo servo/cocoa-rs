@@ -442,6 +442,14 @@ pub trait NSPasteboard {
 
     unsafe fn name(self) -> id;
     unsafe fn changeCount(self) -> NSInteger;
+
+    unsafe fn declareTypes_owner(self, newTypes: id, newOwner: id) -> NSInteger;
+    unsafe fn addTypes_owner(self, newTypes: id, newOwner: id) -> NSInteger;
+    unsafe fn writeFileContents(self, filename: id) -> BOOL;
+    unsafe fn writeFileWrapper(self, wrapper: id) -> BOOL;
+
+    unsafe fn readFileContentsType_toFile(self, _type: id, filename: id) -> id;
+    unsafe fn readFileWrapper(self) -> id;
 }
 
 impl NSPasteboard for id {
@@ -516,6 +524,31 @@ impl NSPasteboard for id {
     unsafe fn changeCount(self) -> NSInteger {
         msg_send![self, changeCount]
     }
+
+    unsafe fn declareTypes_owner(self, newTypes: id, newOwner: id) -> NSInteger {
+        msg_send![self, declareTypes:newTypes owner:newOwner]
+    }
+
+    unsafe fn addTypes_owner(self, newTypes: id, newOwner: id) -> NSInteger {
+        msg_send![self, addTypes:newTypes owner:newOwner]
+    }
+
+    unsafe fn writeFileContents(self, filename: id) -> BOOL {
+        msg_send![self, writeFileContents:filename]
+    }
+
+    unsafe fn writeFileWrapper(self, wrapper: id) -> BOOL {
+        msg_send![self, writeFileWrapper:wrapper]
+    }
+
+    unsafe fn readFileContentsType_toFile(self, _type: id, filename: id) -> id {
+        msg_send![self, readFileContentsType:_type toFile:filename]
+    }
+
+    unsafe fn readFileWrapper(self) -> id {
+        msg_send![self, readFileWrapper]
+    }
+
 }
 
 pub trait NSPasteboardItem {
