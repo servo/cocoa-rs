@@ -3,6 +3,7 @@
 name = "cocoa"
 description = "Bindings to Cocoa for OS X"
 homepage = "https://github.com/servo/cocoa-rs"
+documentation = "https://docs.rs/cocoa/"
 repository = "https://github.com/servo/cocoa-rs"
 version = "0.14.0"
 authors = ["The Servo Project Developers"]
