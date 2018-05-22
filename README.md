@@ -1,6 +1,4 @@
 Cocoa-rs
 --------
 
-This crate provides Rust bindings to Cocoa for OSX. It's dual-licensed MIT /
-Apache 2.0. If you'd like to help improve cocoa-rs, check out [the Servo
-contributing guide](https://github.com/servo/servo/blob/master/CONTRIBUTING.md)! 
+This repository has been merged into the [core-foundation](https://github.com/servo/core-foundation-rs/tree/master/cocoa) repository and is now outdated.
